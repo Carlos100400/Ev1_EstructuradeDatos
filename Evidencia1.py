@@ -145,10 +145,10 @@ while respuesta2.upper()=="SI" :
 
                     case 3:
                         break
-    case 3:
-        print("caso3")
-    case 4:
-         print("Recuperar una nota:")
+      case 3:
+            print("caso3")
+      case 4:
+            print("Recuperar una nota:")
             print("Folios de notas canceladas:")
 
 
@@ -186,9 +186,10 @@ while respuesta2.upper()=="SI" :
                     print("Cancelación de recuperación de nota.")
             else:
                 print("El folio ingresado no corresponde a una nota cancelada.")
-    case 5:
-        print("Gracias por su preferencia. Vuelva pronto.")
-    case _:
-          print ("Seleccione una opcion del menú")
+                  
+      case 5:
+            print("Gracias por su preferencia. Vuelva pronto.")
+      case _:
+            print ("Seleccione una opcion del menú")
   respuesta2 = input('¿Desea regresar al menú principal? SI/NO: 
 

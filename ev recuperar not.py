@@ -1,33 +1,38 @@
-notas_canceladas = {
-    1: "Detalle de la nota 1",
-    2: "Detalle de la nota 2",
-    3: "Detalle de la nota 3",
-}
+ print("Recuperar una nota:")
+            print("Folios de notas canceladas:")
 
-# Mostrar un listado tabular de las notas canceladas
-print("Listado de notas canceladas:")
-print("Folio\tDetalle")
-for folio, _ in notas_canceladas.items():
-    print(f"{folio}\tNota cancelada")
 
-# Pedir al usuario que indique el folio de la nota que desea recuperar
-folio_deseado = int(input("Indique el folio de la nota que desea recuperar (0 para no recuperar ninguna): "))
+            tabla_folios_cancelados = PrettyTable()
+            tabla_folios_cancelados.field_names = ["Folio"]
+            for folio_cancelada in not_cancel.keys():
+                tabla_folios_cancelados.add_row([folio_cancelada])
 
-# Verificar si el usuario desea recuperar una nota
-if folio_deseado == 0:
-    print("No se ha recuperado ninguna nota.")
-else:
-    # Verificar si el folio indicado existe en el diccionario de notas canceladas
-    if folio_deseado in notas_canceladas:
-        # Mostrar el detalle de la nota y pedir confirmación
-        detalle_nota = notas_canceladas[folio_deseado]
-        print(f"Detalle de la nota {folio_deseado}: {detalle_nota}")
-        confirmacion = input("¿Desea recuperar esta nota? (Sí/No): ").lower()
+            print(tabla_folios_cancelados)
 
-        # Verificar la confirmación del usuario
-        if confirmacion == "si":
-            print("La nota ha sido recuperada con éxito.")
-        else:
-            print("La nota no ha sido recuperada.")
-    else:
-        print("El folio indicado no corresponde a ninguna nota cancelada.")
+            consulta_folio = int(input("Ingrese el folio de la nota que desea recuperar (0 para cancelar): "))
+
+            if consulta_folio == 0:
+                print("No se recuperó ninguna nota.")
+            elif consulta_folio in not_cancel:
+                datos_guardados = not_cancel[consulta_folio]
+
+                tabla_detalle_recuperada = PrettyTable()
+                tabla_detalle_recuperada.field_names = ["Referencia", "Datos"]
+                tabla_detalle_recuperada.add_row(["Folio", datos_guardados[0]])
+                tabla_detalle_recuperada.add_row(["Fecha", datos_guardados[1]])
+                tabla_detalle_recuperada.add_row(["Cliente", datos_guardados[2]])
+                tabla_detalle_recuperada.add_row(["Servicios", datos_guardados[3]])
+                tabla_detalle_recuperada.add_row(["Monto", datos_guardados[4]])
+
+                print("Detalle de la nota a recuperar:")
+                print(tabla_detalle_recuperada)
+
+                confirmacion = input("¿Está seguro de que desea recuperar esta nota? (Si/No): ")
+                if confirmacion.lower() == "si":
+                    not_guardada[consulta_folio] = datos_guardados
+                    del not_cancel[consulta_folio]
+                    print("Nota recuperada exitosamente.")
+                else:
+                    print("Cancelación de recuperación de nota.")
+            else:
+                print("El folio ingresado no corresponde a una nota cancelada.")

@@ -159,7 +159,7 @@ while respuesta2.upper()=="SI" :
                       confirmacion = input("¿Está seguro de que desea cancelar esta nota? (Si/N0): ")
                       if confirmacion.lower() == "si":
                            del not_guardada[consulta_folio]
-                           not_cancel[consulta_folio] = not_guardada
+                           not_cancel[consulta_folio] = datos_guardados
                            print("Nota cancelada exitosamente.")
                            break
                       elif confirmacion.lower() == "no":

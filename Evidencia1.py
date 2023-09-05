@@ -191,5 +191,5 @@ while respuesta2.upper()=="SI" :
             print("Gracias por su preferencia. Vuelva pronto.")
       case _:
             print ("Seleccione una opcion del menú")
-  respuesta2 = input('¿Desea regresar al menú principal? SI/NO: 
+  respuesta2 = input("¿Desea regresar al menú principal? SI/NO: ")
 

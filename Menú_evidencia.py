@@ -79,7 +79,33 @@ match opcion:
     case 2:
         print("caso2")
     case 3:
-        print("caso3")
+        consulta_folio = int(input("Ingrese el numero de folio de la nota que desea cancelar: "))
+        if consulta_folio in not_guardada:
+            datos_guardados = not_guardada[consulta_folio]
+            print("Datos de la nota:")
+            print(f"Folio: {datos_guardados[0]}")
+            print(f"Fecha: {datos_guardados[1]}")
+            print(f"Cliente: {datos_guardados[2]}")
+            print(f"Servicio: {datos_guardados[3]}")
+            print(f"Monto: {datos_guardados[4]}")     
+            while True:
+                confirmacion = input("¿Está seguro de que desea cancelar esta nota? (Si/N0): ")
+                if confirmacion.lower() == "si":
+                    del not_guardada[consulta_folio]
+                    not_cancel[consulta_folio] = not_guardada
+                    print("Nota cancelada exitosamente.")
+                    break
+                elif confirmacion.lower() == "no":
+                    print("Cancelación de nota cancelada.")
+                    break
+                else:
+                    print("Opción inválida solo acepta No o Si. Inténtalo nuevamente.")
+                    continue
+            else:
+                print("\nLa nota no se encuentra en el sistema.")
+                break
+
+
     case 4:
         print("caso4")
     case 5:
